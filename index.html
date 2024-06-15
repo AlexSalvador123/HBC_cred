@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Simulador do seu Crédito Habitação</title>
+  <style>
+    body {
+      background: #f7f7f7;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 80%;
+      max-width: 1200px;
+    }
+    .left-panel {
+      flex: 1;
+      color: rgb(8, 3, 54);
+      padding-right: 40px;
+    }
+    .left-panel h1 {
+      font-size: 2em;
+      color: rgb(8, 3, 54);
+      margin-bottom: 20px;
+    }
+    .left-panel p {
+      color: rgb(8, 3, 54);
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    .left-panel ul {
+      list-style: none;
+      padding: 0;
+    }
+    .left-panel ul li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .left-panel ul li::before {
+      content: '✔';
+      color: rgb(8, 3, 54);
+      margin-right: 10px;
+    }
+    .right-panel {
+      flex: 1;
+    }
+    .right-panel .input-group {
+      margin-bottom: 20px;
+    }
+    .right-panel .input-group label {
+      display: block;
+      color: rgb(8, 3, 54);
+      font-size: 0.9em;
+      margin-bottom: 5px;
+    }
+    .right-panel .input-group div {
+        color: rgb(8, 3, 54);
+        font-size: 1.2em;
+        margin-left: 40%;
+        margin-right: 40%;
+      }
+    .right-panel .input-group input[type="range"] {
+        width: 100%;
+        appearance: none;
+        height: 10px;
+        border-radius: 5px;
+        outline: none;
+      }
+      .right-panel .input-group input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: rgb(8, 3, 54);
+        cursor: pointer;
+      }
+    #aval {
+        background-color: #d3d3d3; /* Change background color */
+    }
+    #finan {
+        background-color: #d3d3d3; /* Change background color */
+    }
+    #prazo {
+        background-color: #d3d3d3; /* Change background color */
+    }
+
+    .right-panel .input-group label {
+        display: block;
+        color: rgb(8, 3, 54);
+        font-size: 1.2em;
+        margin-bottom: 5px;
+      }
+    
+    .right-panel .input-group p {
+      text-align: right;
+      color: rgb(8, 3, 54);
+      font-size: 1.2em;
+      margin-top: 5px;
+    }
+    .right-panel button {
+      width: 100%;
+      padding: 10px;
+      background: rgb(8, 3, 54);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .right-panel button:hover {
+      background: #d3d3d3;
+    }
+    #loancal {
+        width: 40%;
+        height: auto;
+        background-color: white;
+        color: rgb(8, 3, 54);
+        padding: 10px;
+        margin: 100px auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 20px;
+        text-align: center;
+        color: rgb(8, 3, 54);
+        margin-bottom: 35px;
+      }
+      h2 {
+        text-align: center;
+        color: rgb(8, 3, 54);
+        margin-top: 35px;
+      }
+      .loan-offer {
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .monthly-payment {
+        font-size: 3em; 
+        color: rgb(8, 3, 54);
+        text-align: center;
+        vertical-align:bottom;
+      }
+      .monthly-payment span {
+        font-size: 0.4em;
+        color: rgb(8, 3, 54);
+        vertical-align:bottom;
+        margin-bottom: 50%;
+      }
+      
+      .details {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .details div {
+        text-align: left;
+        color: rgb(8, 3, 54);
+      }
+      .cta_div{
+        text-align: center;
+        color:rgb(8, 3, 54);
+      }
+      .cta {
+
+        color:rgb(8, 3, 54);
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+        margin: auto;
+      }
+      .cta:hover {
+        background-color: #d3d3d3;
+      }
+      .refresh-button{
+        padding: 10px;
+        background: none;
+        color: rgb(8, 3, 54);
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="button">
+
+      </div>
+      <h1>Simulador do seu <br><strong>Crédito Habitação</strong></h1>
+      <br>
+      <p>Faça a simulação da sua casa em segundos. Conte com o <strong>HBC</strong> para o ajudar.</p>
+      <br>
+      <ul>
+        <li>Beneficie de uma análise personalizada sem compromisso</li>
+        <li>Compare várias ofertas de uma só vez</li>
+        <li>Simule em mais de 10 bancos</li>
+        <li>Ajudamos em todo o processo, poupando-lhe tempo</li>
+      </ul>
+    </div>
+    <div class="right-panel">
+      <div class="input-group">
+        <label for="aval">Valor Expectável de Avaliação</label>
+        <input id="aval" type="range" min="10000" max="2000000" value="140000" step="5000" >
+        <div>
+            <span id="amountaval" >140 000 </span><span>€</span>
+        </div>
+      </div>
+      <div class="input-group">
+        <label for="finan">Valor a Financiar</label>
+        <input id="finan" type="range" min="8000" max="1600000" value="125000" step="2000">
+        <div>
+            <span id="amountfinan">126 000 </span><span>€</span>
+        </div>
+    </div>
+        
+      <div class="input-group">
+        <label for="prazo">Prazo</label>
+        <input id="prazo" type="range" min="1" max="40" value="20" step="1">
+        <div>
+            <span id="amountprazo">20</span><span> Anos</span>
+        </div>
+        
+      </div>
+        <button onclick="computeLoan()">Calcular</button>
+        <p style="font-size: 0.7em; text-align:center;">valor pode alterar em função da Euribor a 12 meses e do spread</p>
+    </div>
+  </div>
+  <script>
+    const amountAval = document.querySelector('#aval');
+    const amountFinan = document.querySelector('#finan');
+    const amountPrazo = document.querySelector('#prazo');
+    const amountAvalDisplay = document.querySelector('#amountaval');
+    const amountFinanDisplay = document.querySelector('#amountfinan');
+    const amountPrazoDisplay = document.querySelector('#amountprazo');
+      
+    amountAval.addEventListener('input', () => {
+        const avalValue = amountAval.value;
+        amountAvalDisplay.textContent = avalValue;
+        const newFinanMax = 0.9 * avalValue;
+        amountFinan.max = newFinanMax;
+        if (amountFinan.value > newFinanMax) {
+            amountFinan.value = newFinanMax;
+        }
+        amountFinanDisplay.textContent = amountFinan.value;
+    });
+
+    amountFinan.addEventListener('input', () => {
+        amountFinanDisplay.textContent = amountFinan.value;
+    });
+
+    amountPrazo.addEventListener('input', () => {
+        amountPrazoDisplay.textContent = amountPrazo.value;
+    });
+
+    function computeLoan() {
+        const amountToFinance = parseFloat(amountFinan.value);
+        const amountAvaliado = parseFloat(amountAval.value);
+        const Years = parseFloat(amountPrazo.value);
+        const months = Years * 12;
+
+        const spread = 0.8 / 100;
+        const euribor = 3.68 / 100;
+        const TAN = spread + euribor;
+        const TAEG = TAN + 0.6 / 100;
+
+        const interestRate = TAN / 12;
+            
+        let monthlyPayment = amountToFinance * (interestRate * Math.pow(1 + interestRate, months)) / (Math.pow(1 + interestRate, months) - 1);
+        document.querySelector('.button').innerHTML = `<button onclick="window.location.reload();" class="refresh-button"><i class="fas fa-angle-double-left fa-lg"></i></button>`
+        
+        document.querySelector('.right-panel').innerHTML = `
+        <div class="loancal">
+            <h1>A nossa melhor opção</h1>
+            <div class="monthly-payment">
+                <strong>${monthlyPayment.toFixed(2)} €</strong>
+                <span><tiny>Mensalidade</tiny></span>
+            </div>
+            <br>
+            <hr>
+            <div class="details">
+                <div>
+                    <p>Valor Expectável de Avaliação:</p>
+                    <p><strong>${amountAvaliado.toFixed(2)}€</strong></p>
+                </div>
+                <div>
+                    <p>Valor a Financiar:</p>
+                    <p><strong>${amountToFinance.toFixed(2)} €</strong></p>
+                </div>
+                <div>
+                    <p>Prazo:</p>
+                    <p><strong>${Years} Anos</strong></p>
+                </div>
+            </div>
+            <div class="details">
+                <div>
+                    <p>Spread</p>
+                    <p><strong>${(spread * 100).toFixed(3)}%</strong></p>
+                </div>
+                <div>
+                    <p>Euribor 12M</p>
+                    <p><strong>${(euribor * 100).toFixed(3)}%</strong></p>
+                </div>
+                <div>
+                    <p>TAEG</p>
+                    <p><strong>${(TAEG * 100).toFixed(1)}%</strong></p>
+                </div>
+            </div>
+            <hr>
+            <br>
+            <div class="cta_div">
+                <p>Para mais informações:</p>
+                <a href="tel:912345678" class="cta"><i class="fas fa-phone"></i> 912345678</a>
+                <a href="mailto:propostas@gmail.com" class="cta"><i class="fas fa-envelope"></i> propostas@gmail.com</a>
+            </div>
+            
+        </div>
+    `;
+}
+  </script>
+</body>
+</html>
+
