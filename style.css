@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #23527c;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+section {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.franchise-info {
+    margin-top: 20px;
+}
+
+.franchise-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.franchise-info li {
+    margin-bottom: 10px;
+}
+
+.franchise-info strong {
+    font-weight: bold;
+}
+
+.franchise-description {
+    margin-top: 20px;
+}
+
+.franchise-description p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.call-to-action {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.call-to-action button {
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+}
